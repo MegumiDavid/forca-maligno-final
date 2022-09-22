@@ -97,7 +97,6 @@ class ControladorDeErrosTest {
         }
 
         assertEquals(ce1.equals(ce2), false);
-
     }
 
     /*
@@ -106,21 +105,10 @@ class ControladorDeErrosTest {
     }
     */
 
-    /*
     @Test
     void testClone() {
-        try {
-            controlador.registre('a');
-            controlador.registre('b');
-            controlador.registre('c');
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-        ControladorDeLetrasJaDigitadas c1 = (ControladorDeLetrasJaDigitadas) controlador.clone();
-
-        assertFalse(controlador == c1);
-        assertTrue(controlador.equals(c1));
+        assertThrows(Exception.class, () -> {
+            new ControladorDeErros(null);
+        });
     }
-    */
 }
