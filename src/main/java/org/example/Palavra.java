@@ -37,7 +37,7 @@ public class Palavra implements Comparable<Palavra>
                 counter++;
             }
         }
-        return j;
+        return j+1;
     }
 
     public int getTamanho ()

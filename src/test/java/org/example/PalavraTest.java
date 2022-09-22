@@ -10,69 +10,106 @@ class PalavraTest {
     Palavra pal;
 
     @BeforeEach
-    void setUp() {
-        try {
-            pal = new Palavra("palavra");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+    void setUp()
+    {
+        try
+        {
+            pal = new Palavra("teste");
+        } catch (Exception exc)
+        {
+            throw new RuntimeException(exc);
         }
     }
 
     @Test
-    void palavraConstructor() {
-        assertThrows(Exception.class, () -> {
+    void palavraConstructor()
+    {
+        assertThrows(Exception.class, () ->
+        {
             new Palavra("");
         });
-        assertThrows(Exception.class, () -> {
+        assertThrows(Exception.class, () ->
+        {
             new Palavra(null);
         });
     }
 
     @Test
     void getQuantidade() {
-        assertEquals(pal.getQuantidade('p'), 1);
-        assertEquals(pal.getQuantidade('a'), 3);
-        assertEquals(pal.getQuantidade('l'), 1);
-        assertEquals(pal.getQuantidade('v'), 1);
-        assertEquals(pal.getQuantidade('r'), 1);
-        assertEquals(pal.getQuantidade('w'), 0);
+        assertEquals(pal.getQuantidade('t'), 2);
+        assertEquals(pal.getQuantidade('e'), 2);
+        assertEquals(pal.getQuantidade('s'), 1);
+        assertEquals(pal.getQuantidade('v'), 0);
     }
 
     @Test
     void getPosicaoDaIezimaOcorrencia() {
-        assertThrows(Exception.class, () -> {
-            pal.getPosicaoDaIezimaOcorrencia(3, 'a');
+        assertThrows(Exception.class, () ->
+        {
+            pal.getPosicaoDaIezimaOcorrencia(6, 'e');
         });
 
-        try {
-            assertEquals(pal.getPosicaoDaIezimaOcorrencia(0, 'a'), 1);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        assertThrows(Exception.class, () ->
+        {
+            pal.getPosicaoDaIezimaOcorrencia(0, 'n');
+        });
+
+        assertThrows(Exception.class, () ->
+        {
+            pal.getPosicaoDaIezimaOcorrencia(3, 'e');
+        });
+
+        try
+        {
+            assertEquals(pal.getPosicaoDaIezimaOcorrencia(0, 't'), 1);
+            assertEquals(pal.getPosicaoDaIezimaOcorrencia(1, 't'), 4);
+            assertEquals(pal.getPosicaoDaIezimaOcorrencia(0, 'e'), 2);
+            assertEquals(pal.getPosicaoDaIezimaOcorrencia(1, 'e'), 5);
+        } catch (Exception exc)
+        {
+            throw new RuntimeException(exc);
         }
     }
 
     @Test
-    void testEquals() {
+    void testEqualsHashcode() {
         Palavra p1, p2, p3;
 
-        try {
-            p1 = new Palavra("palavra");
-            p2 = new Palavra("palavra");
-            p3 = new Palavra("xxxxxxx");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        try
+        {
+            p1 = new Palavra("teste");
+            p2 = new Palavra("teste");
+            p3 = new Palavra("abcde");
+        } catch (Exception exc)
+        {
+            throw new RuntimeException(exc);
         }
 
-        assertEquals(p1.equals(p1), true);
-        assertEquals(p1.equals(p2), true);
-        assertEquals(p1.equals(p3), false);
-        assertEquals(pal.equals(null), false);
+        assertTrue(p1.equals(p1));
+        assertTrue(p2.equals(p2));
+        assertTrue(p3.equals(p3));
+        assertTrue(p1.equals(p2) && p2.equals(p1));
+        assertTrue(p1.equals(pal) && pal.equals(p1));
+        assertTrue(p2.equals(pal) && pal.equals(p2));
+        assertFalse(p1.equals(p3));
+        assertFalse(pal.equals(null));
+
+        assertEquals(p1.hashCode(), p1.hashCode());
+        assertEquals(p1.hashCode(), p2.hashCode());
+        assertEquals(pal.hashCode(), p1.hashCode());
+        assertEquals(pal.hashCode(), p2.hashCode());
+        assertNotEquals(pal.hashCode(), p3.hashCode());
+
+        try
+        {
+            p1 = new Palavra("teste2");
+        } catch (Exception exc)
+        {
+            throw new RuntimeException(exc);
+        }
+
+        assertNotEquals(pal.hashCode(), p1.hashCode());
     }
 
-    /*
-    @Test
-    void testHashCode() {
-        assertEquals(pal.hashCode(), "palavra".hashCode());
-    }
-    */
+
 }
