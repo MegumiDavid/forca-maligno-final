@@ -143,6 +143,9 @@ class ControladorDeErrosTest
         try {
             ControladorDeErros copia = new ControladorDeErros(ce);
             assertEquals(true, ce.equals(copia));
+
+            copia.registreUmErro();
+            assertEquals(false, ce.equals(copia));
         } catch (Exception exc) {
             throw new RuntimeException(exc);
         }
