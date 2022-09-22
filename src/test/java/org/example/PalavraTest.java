@@ -35,7 +35,8 @@ class PalavraTest {
     }
 
     @Test
-    void getQuantidade() {
+    void getQuantidade()
+    {
         assertEquals(pal.getQuantidade('t'), 2);
         assertEquals(pal.getQuantidade('e'), 2);
         assertEquals(pal.getQuantidade('s'), 1);
@@ -43,7 +44,8 @@ class PalavraTest {
     }
 
     @Test
-    void getPosicaoDaIezimaOcorrencia() {
+    void getPosicaoDaIezimaOcorrencia()
+    {
         assertThrows(Exception.class, () ->
         {
             pal.getPosicaoDaIezimaOcorrencia(6, 'e');
@@ -72,7 +74,8 @@ class PalavraTest {
     }
 
     @Test
-    void testEqualsHashcode() {
+    void testEqualsHashcode()
+    {
         Palavra p1, p2, p3;
 
         try

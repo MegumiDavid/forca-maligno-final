@@ -131,7 +131,6 @@ class ControladorDeErrosTest
 
     }
 
-
     @Test
     void testClone()
     {
@@ -140,13 +139,15 @@ class ControladorDeErrosTest
             new ControladorDeErros(null);
         });
 
-        try {
+        try
+        {
             ControladorDeErros copia = new ControladorDeErros(ce);
             assertEquals(true, ce.equals(copia));
 
             copia.registreUmErro();
             assertEquals(false, ce.equals(copia));
-        } catch (Exception exc) {
+        } catch (Exception exc)
+        {
             throw new RuntimeException(exc);
         }
     }

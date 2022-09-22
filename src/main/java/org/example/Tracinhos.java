@@ -7,7 +7,7 @@ public class Tracinhos implements Cloneable
     public Tracinhos (int qtd) throws Exception
     {
         if (qtd < 0)
-            throw new Exception ("quantidade invalidade");
+            throw new Exception ("quantidade invalida");
 
         this.texto = new char[qtd];
         for (int i = 0; i<qtd; i++)
@@ -51,8 +51,9 @@ public class Tracinhos implements Cloneable
         if(this == obj) return true;
         if(obj == null) return false;
         if(this.getClass() != obj.getClass()) return false;
-        for (int i = 0 ; i<this.texto.length; i++)
-            if(this.texto[i] != ((Tracinhos) obj).texto[i]) return false;
+        if(!String.valueOf(this.texto).equals(String.valueOf(((Tracinhos) obj).texto)))
+            return false;
+
         return true;
     }
 
@@ -61,8 +62,7 @@ public class Tracinhos implements Cloneable
     {
         int ret = 222;
 
-        for (int i= 0; i<this.texto.length; i++)
-            ret = 7*ret + Character.valueOf(this.texto[i]).hashCode();
+        ret = 7*ret + String.valueOf(this.texto).hashCode();
 
         if (ret<0) ret=-ret;
 
