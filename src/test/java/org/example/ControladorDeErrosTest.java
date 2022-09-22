@@ -139,5 +139,12 @@ class ControladorDeErrosTest
         {
             new ControladorDeErros(null);
         });
+
+        try {
+            ControladorDeErros copia = new ControladorDeErros(ce);
+            assertEquals(true, ce.equals(copia));
+        } catch (Exception exc) {
+            throw new RuntimeException(exc);
+        }
     }
 }
