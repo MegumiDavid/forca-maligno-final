@@ -63,10 +63,10 @@ class PalavraTest {
 
         try
         {
-            assertEquals(pal.getPosicaoDaIezimaOcorrencia(0, 't'), 1);
-            assertEquals(pal.getPosicaoDaIezimaOcorrencia(1, 't'), 4);
-            assertEquals(pal.getPosicaoDaIezimaOcorrencia(0, 'e'), 2);
-            assertEquals(pal.getPosicaoDaIezimaOcorrencia(1, 'e'), 5);
+            assertEquals(pal.getPosicaoDaIezimaOcorrencia(0, 't'), 0);
+            assertEquals(pal.getPosicaoDaIezimaOcorrencia(1, 't'), 3);
+            assertEquals(pal.getPosicaoDaIezimaOcorrencia(0, 'e'), 1);
+            assertEquals(pal.getPosicaoDaIezimaOcorrencia(1, 'e'), 4);
         } catch (Exception exc)
         {
             throw new RuntimeException(exc);
