@@ -89,8 +89,7 @@ class PalavraTest {
         assertTrue(p2.equals(p2));
         assertTrue(p3.equals(p3));
         assertTrue(p1.equals(p2) && p2.equals(p1));
-        assertTrue(p1.equals(pal) && pal.equals(p1));
-        assertTrue(p2.equals(pal) && pal.equals(p2));
+        assertTrue(p1.equals(pal) && pal.equals(p2));
         assertFalse(p1.equals(p3));
         assertFalse(pal.equals(null));
 
