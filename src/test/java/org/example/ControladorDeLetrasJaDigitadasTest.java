@@ -45,6 +45,21 @@ class ControladorDeLetrasJaDigitadasTest {
     @Test
     void testToString()
     {
+        assertEquals("", cld.toString());
+
+        try
+        {
+            cld.registre('a');
+            cld.registre('b');
+            assertEquals("a, b", cld.toString());
+
+            cld.registre('c');
+        } catch (Exception exc)
+        {
+            throw new RuntimeException(exc);
+        }
+
+        assertEquals("a, b, c", cld.toString());
     }
 
     @Test

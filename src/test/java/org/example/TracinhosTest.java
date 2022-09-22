@@ -79,7 +79,24 @@ class TracinhosTest
     @Test
     void testToString()
     {
+        assertEquals("_ _ _ _ _ ", trac.toString());
 
+        try
+        {
+            trac.revele(0, 't');
+            trac.revele(1, 'e');
+
+            assertEquals("t e _ _ _ ", trac.toString());
+
+            trac.revele(2, 's');
+            trac.revele(3, 't');
+            trac.revele(4, 'e');
+        } catch (Exception exc)
+        {
+            throw new RuntimeException(exc);
+        }
+
+        assertEquals("t e s t e ", trac.toString());
     }
 
     @Test
